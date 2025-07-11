@@ -2,8 +2,6 @@
 
 Um projeto para criar QR Codes de forma fácil e com um design moderno, usando **HTML**, **CSS** e **JavaScript**.
 
-![Demonstração do Gerador de QR Code](https://i.imgur.com/gU82g3E.png)
-
 ## Funcionalidades
 
 * **Múltiplos Tipos de QR Code:** Crie códigos para URL, Texto, Contato (vCard) e Redes Sociais.
