@@ -1,0 +1,174 @@
+:root {
+    --primary-font: 'Chakra Petch', sans-serif;
+    --text-color: #ffffff;
+    --generate-color: #50fa7b; /* Verde Lima */
+    --tab-active-bg: rgba(255, 255, 255, 0.2);
+    --download-color: #bd93f9; /* Roxo */
+    --input-bg: rgba(0, 0, 0, 0.25);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--primary-font);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background: #282a36; /* Fundo escuro */
+    overflow: hidden;
+    color: var(--text-color);
+}
+
+/* Efeitos de fundo animados (idêntico ao anterior) */
+.background-effects .circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(150px);
+    opacity: 0.8;
+}
+.background-effects .c1 {
+    width: 400px; height: 400px; background: #ff79c6; top: -150px; left: -150px; animation: move1 15s infinite alternate;
+}
+.background-effects .c2 {
+    width: 350px; height: 350px; background: #bd93f9; bottom: -100px; right: -100px; animation: move2 12s infinite alternate;
+}
+@keyframes move1 { to { transform: translate(100px, 200px); } }
+@keyframes move2 { to { transform: translate(-150px, -100px); } }
+
+/* Container principal com efeito Glassmorphism */
+.qr-container {
+    z-index: 10;
+    width: 100%;
+    max-width: 420px;
+    background: rgba(49, 50, 68, 0.4);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    animation: fadeIn 0.8s ease-out;
+}
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+h1 {
+    text-align: center;
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+/* Estilo das abas */
+.tabs {
+    display: flex;
+    justify-content: space-between;
+    background: var(--input-bg);
+    border-radius: 12px;
+    padding: 5px;
+}
+.tab-button {
+    flex: 1;
+    padding: 10px;
+    font-family: var(--primary-font);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-color);
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.tab-button.active {
+    background-color: var(--tab-active-bg);
+}
+.tab-button:not(.active):hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Estilo dos painéis de conteúdo */
+.content-pane { display: none; flex-direction: column; gap: 12px; }
+.content-pane.active { display: flex; }
+.content-pane p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+}
+
+/* Estilo dos inputs, textarea e select */
+input, textarea, select {
+    width: 100%;
+    padding: 12px;
+    background: var(--input-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: var(--text-color);
+    font-family: var(--primary-font);
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+textarea { resize: vertical; min-height: 80px; }
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--download-color);
+    box-shadow: 0 0 10px rgba(189, 147, 249, 0.5);
+}
+
+/* Estilo dos botões principais */
+#generate-btn, #download-btn {
+    padding: 15px;
+    font-family: var(--primary-font);
+    font-size: 1.2rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+#generate-btn {
+    background-color: var(--generate-color);
+    color: #282a36;
+}
+#generate-btn:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+}
+#download-btn {
+    background-color: var(--download-color);
+    color: var(--text-color);
+}
+#download-btn:hover {
+    filter: brightness(1.1);
+}
+
+/* Área de exibição do QR Code */
+#qr-code-canvas {
+    background: var(--input-bg);
+    padding: 20px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 250px;
+}
+#qr-code-canvas .placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    color: rgba(255, 255, 255, 0.4);
+}
+#qr-code-canvas canvas {
+    border-radius: 8px;
+}
+
+/* Classe para esconder/mostrar elementos */
+.hidden { display: none !important; }

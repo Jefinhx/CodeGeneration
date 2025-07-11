@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de QR Code Moderno</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="background-effects">
+        <div class="circle c1"></div>
+        <div class="circle c2"></div>
+    </div>
+
+    <main class="qr-container">
+        <h1>Gerador de QR Code</h1>
+
+        <div class="tabs">
+            <button class="tab-button active" data-tab="url-content">URL / Texto</button>
+            <button class="tab-button" data-tab="vcard-content">Contato (vCard)</button>
+            <button class="tab-button" data-tab="social-content">Rede Social</button>
+        </div>
+
+        <div class="content">
+            <div id="url-content" class="content-pane active">
+                <p>Digite qualquer texto ou URL que desejar.</p>
+                <textarea id="text-input" placeholder="https://www.google.com"></textarea>
+            </div>
+
+            <div id="vcard-content" class="content-pane">
+                <p>Preencha os dados para criar um cartão de contato digital.</p>
+                <input type="text" id="vcard-name" placeholder="Nome Completo">
+                <input type="tel" id="vcard-phone" placeholder="Telefone (ex: +55 32 999998888)">
+                <input type="email" id="vcard-email" placeholder="E-mail">
+                <input type="text" id="vcard-org" placeholder="Empresa (Opcional)">
+            </div>
+            
+            <div id="social-content" class="content-pane">
+                <p>Selecione a rede e insira seu nome de usuário.</p>
+                <select id="social-network">
+                    <option value="instagram">Instagram</option>
+                    <option value="twitter">Twitter / X</option>
+                    <option value="linkedin">LinkedIn</option>
+                    <option value="github">GitHub</option>
+                    <option value="facebook">Facebook</option>
+                </select>
+                <input type="text" id="social-user" placeholder="Seu nome de usuário">
+            </div>
+        </div>
+        
+        <button id="generate-btn">Gerar QR Code</button>
+
+        <div id="qr-code-canvas">
+             <div class="placeholder">
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-qr-code" viewBox="0 0 16 16"><path d="M2 2h2v2H2z"/><path d="M6 0v6H0V0h6zM5 1H1v4h4V1zM2 8h2v2H2z"/><path d="M6 8v6H0V8h6zM5 9H1v4h4V9zM8 2h2v2H8z"/><path d="M12 0v6h-2V0h2zM11 1h-1v4h1V1zM8 8h2v2H8z"/><path d="M12 8v6h-2V8h2zM11 9h-1v4h1V9zM14 2h2v2h-2z"/><path d="M16 0v6h-2V0h2zM15 1h-1v4h1V1zM14 8h2v2h-2z"/><path d="M16 8v6h-2V8h2zM15 9h-1v4h1V9z"/></svg>
+                <span>Seu QR Code aparecerá aqui</span>
+            </div>
+        </div>
+        
+        <button id="download-btn" class="hidden">Download (.png)</button>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-styling/lib/qrcode-styling.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
